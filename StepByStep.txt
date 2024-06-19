@@ -1,0 +1,70 @@
+SETUP PROJECT
+1. pastikan node js terinstal
+2. buat folder aplikasi
+3. run npm init
+4. install expressjs
+5. create server and set port in server.js
+6. run server
+7. refactor config port
+7. create bassic routes in server.js
+8. test server
+
+CREATE DATABASE MONGO
+1. refactor basic auth routes
+    create routes folder 
+    create routes.js
+    import to server js
+    create auth.routes.js
+    create controller folder
+    create auth.controller.js
+    import auth.routes.js ke routes.js
+2. test route
+3. setup MONGO DATABASE
+    buat akun
+    buat cluster
+    pilih deployment free
+    simpan uri
+    copy uri ke env
+    create config database.js
+    gunakan try_catch
+    simpan config mongo uri ke config/ app.js
+    export dan import connection ke server.js
+    run server 
+    error ip
+    buka cluster mongo pilih network access
+    click connect add 0.0.0.0/0
+    run server
+    connection sucess
+
+CREATE USER COLLECTION MONGO and signup user api
+1. Ke website ongo db klik database browse COLLECTION
+2. hapus sample database kalau ada
+3. buat model
+    buat folder models 
+    buat user.model.js
+    buat userSchema
+    skip bagian throw error
+4. buat middleware (built in middleware from express untuk mengesktrak payload json)
+    buka server.js
+    app.use(express.json()) untuk menerima request body json payload
+5. selesaikan api untuk sign up tanp hashing passwor
+   - untuk membantu proses development import Request dan Response type dari express
+   - tambahkan anotasi jsdocs ke parameter req dan Response
+   - validasi properti otomatis akan dilakukan oleh mongoose schema jadi hanya perlu menambahkan validati tambahan
+   - throw new Error('') ketika konfirmasi password tidak sama
+   - ambil uri dari avatar-placeholder generate berdasarkan gender dan tambahkan query username agar foto yg dihasilkan konsisten
+   - save
+6. cek api
+7. hash password
+    install library bcryptjs
+    import ke auth.controller.js
+    buat salt dan bcrypt menggunakan asynchronous funtion agar mengurangi beban cpu
+8. test api lagi pastikan password berhasil dihash
+9. coba ketika konfirmasi password berbeda
+10. buat kelas baru untuk validasi error agar response sesuai
+11. throw error pada userSchema user.model.js saat event save ke ValidationError yang merupakan prototype instance dari class error
+12. untuk error unique value buat kelas baru bernama conflict error dengan status kode 409
+    dikarenakan mongoose tidak melakukan hanya mengecek struktur datanya saja. 409 mengindikasikan transaksi gagal dalam proses eksekusi
+11. test api
+ 
+AUTHENTICATION WITH JWT
